@@ -1,7 +1,5 @@
 ---
 title: "Results Vanished Journals"
-author: "Najko Jahn"
-date: "11/10/2019"
 output: github_document
 ---
 

@@ -1,7 +1,5 @@
 Results Vanished Journals
 ================
-Najko Jahn
-11/10/2019
 
 ## Load data
 
