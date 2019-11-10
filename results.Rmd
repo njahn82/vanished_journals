@@ -1,0 +1,171 @@
+---
+title: "Results Vanished Journals"
+author: "Najko Jahn"
+date: "11/10/2019"
+output: github_document
+---
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.width = 6,
+  fig.asp = 0.618,
+  out.width = "70%",
+  fig.align = "center",
+  dpi = 300
+)
+```
+
+## Load data
+
+Data was manually compiled and curated using a Google spreadsheet.
+
+<https://docs.google.com/spreadsheets/d/1M8WdNFpT8Xd-Bj7Eo_4Qcj-jBOdKQhRNxOHj1ckC0n0/edit#gid=0>
+
+```{r}
+library(tidyverse)
+library(googledrive)
+library(cowplot)
+googledrive::drive_download(
+  googledrive::as_id("https://docs.google.com/spreadsheets/d/1M8WdNFpT8Xd-Bj7Eo_4Qcj-jBOdKQhRNxOHj1ckC0n0/edit#gid=0"), 
+  path = "data/vanished_journals.xlsx",
+  overwrite = TRUE
+  )
+jn_raw <- readxl::read_xlsx("data/vanished_journals.xlsx")
+#' date transformation
+my_jn <- jn_raw %>%
+  mutate_at(vars(contains("Year")), as.character) %>%
+  mutate_at(vars(contains("Year")), function(x) gsub(".0", "", x, fixed = TRUE)) %>%
+  mutate_at(vars(contains("Year")), function(x) lubridate::parse_date_time(x, c('y')))
+```
+
+### How many journals disappeared?
+
+```{r}
+my_jn %>%
+  distinct(`Journal Name`) %>%
+  nrow()
+```
+
+### When did they vanished from the Web?
+
+
+```{r}
+my_jn %>% 
+filter(!is.na(`Last Year Online`)) %>%
+  ggplot(aes(as.Date(`Last Year Online`, origin = "%Y-%m-%d"))) +
+  geom_histogram(stat = "count") +
+  scale_x_date(date_labels = "%Y", 
+               limits = c(as.Date("2000-01-01"), as.Date("2019-12-31")),
+               date_breaks = "3 year"
+               ) +
+  labs(x = "", y = "Journals") +
+  theme_minimal_hgrid(12)
+```
+
+### For how long were the journals actively publishing?
+
+```{r}
+my_jn <- my_jn %>%
+  mutate(publishing_period = lubridate::year(`End Year`) - lubridate::year(`Start Year`)) %>%
+  filter(publishing_period > 1)
+
+ggplot(my_jn, aes(x = publishing_period)) +
+  geom_histogram(binwidth = 4, fill="#56B4E9", alpha=0.5, color = "#56B4E9") +
+  geom_vline(aes(xintercept = mean(publishing_period, na.rm = T)),
+             colour = "#E69F00", linetype ="dashed", size = .8) +
+  geom_vline(aes(xintercept = median(publishing_period, na.rm = T)),
+             colour = "red", linetype ="dashed", size = .8) +
+  theme_minimal_hgrid(12) +
+  scale_x_continuous("Years active", breaks = seq(0,max(my_jn$publishing_period), by = 4)) +
+  ylab("Journals") 
+```
+
+#### by Discipline
+
+Summary table
+
+```{r, results='asis'}
+my_jn %>%
+  filter(!is.na(`Discipline (where more info available)`), `Discipline (where more info available)` != "?") %>%
+ rename(subject = `Discipline (where more info available)`) %>% 
+  group_by(subject) %>%
+  summarise(n_journals = n_distinct(`Journal Name`),
+            mean = mean(publishing_period),
+            median = median(publishing_period),
+            q25 = quantile(publishing_period, probs = .25),
+            q75 = quantile(publishing_period, probs = .75)) %>%
+  knitr::kable()
+```
+
+Beeswarm plot
+
+```{r}
+library(ggbeeswarm)
+my_jn %>%
+  filter(!is.na(`Discipline (where more info available)`), `Discipline (where more info available)` != "?") %>%
+  rename(subject = `Discipline (where more info available)`) %>%
+  ggplot(aes(subject, publishing_period, color = subject)) +
+  geom_beeswarm(beeswarmArgs=list(side=1)) +
+  theme_minimal_hgrid(12) +
+  labs(x = NULL, y = "Years active") +
+  scale_colour_brewer(type = "qual", palette = "Set1") +
+  theme(legend.position="none")
+```
+
+
+#### by country
+
+Journals originate from `r length(unique(my_jn$Country))` distinct countries.
+
+```{r, results='asis'}
+my_jn %>%
+  count(Country, sort = TRUE) %>%
+  mutate(prop = n / sum(n) * 100) %>%
+  knitr::kable()
+```
+
+per Word Bank region
+
+```{r, results='asis'}
+library(countrycode)
+my_jn %>%
+  mutate(region = countrycode::countrycode(Country, "country.name", "region")) %>%
+  count(region, sort = TRUE) %>%
+  mutate(prop = n / sum(n) * 100) %>%
+  knitr::kable()
+```
+
+Suggestion: make a world map similar to
+
+<https://github.com/subugoe/oa2020cadata/blob/master/analysis/paper.md#global-map-of-journal-publishing>
+
+where circle size represents the number of journals, an pies represent the subject
+
+#### by evidence source
+
+```{r, results='asis'}
+my_jn %>%
+  count(Source, sort = TRUE) %>%
+  mutate(prop = n / sum(n) * 100) %>%
+  knitr::kable()
+```
+
+### Archives
+
+The Keepers by subject
+
+```{r, results='asis'}
+my_jn %>%
+   filter(!is.na(`Discipline (where more info available)`), `Discipline (where more info available)` != "?") %>%
+  rename(subject = `Discipline (where more info available)`) %>%
+  group_by(subject, `The Keepers (archived)`) %>%
+  summarise(
+    n_journals = n_distinct(`Journal Name`)
+    ) %>%
+  knitr::kable()
+```
