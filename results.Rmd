@@ -190,6 +190,41 @@ Suggestion: make a world map similar to
 
 where circle size represents the number of journals, an pies represent the subject
 
+```{r}
+map_data <-my_jn %>%
+  filter(!is.na(`Discipline (where more info available)`), `Discipline (where more info available)` != "?") %>%
+  rename(subject = `Discipline (where more info available)`) %>%
+  mutate(region = countrycode::countrycode(Country, "country.name", "region")) %>%
+  count(region, subject, sort = TRUE) 
+# manual lat long mapping regions
+# map_data %>%
+#   distinct(region) %>%
+#   write_csv("region_lat_long.csv")
+latlong <- readr::read_csv("region_lat_long.csv")
+tmp <- inner_join(map_data, latlong, by = "region") %>%
+  spread(subject, n) %>%
+  mutate_at(c(4:7), ~replace(., is.na(.), 0)) %>%
+  mutate(all_n = Health + LS + PSM + SSH) 
+world <- map_data("world")
+p <- 
+  ggplot(world, aes(long, lat)) +
+  geom_map(
+    map = world,
+    aes(map_id = region),
+    color = "white",
+    size = 0.1,
+    fill  = "#b3b3b3a0"
+  ) +
+  coord_sf() 
+p +
+  scatterpie::geom_scatterpie(
+    aes(long, lat, r = sqrt(all_n) * 3),
+    data = tmp,
+    cols = c("Health", "LS", "PSM", "SSH"),
+    alpha = .7
+  ) 
+```
+
 #### by evidence source
 
 ```{r, results='asis'}

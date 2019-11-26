@@ -131,6 +131,8 @@ where circle size represents the number of journals, an pies represent
 the
 subject
 
+<img src="results_files/figure-gfm/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+
 #### by evidence source
 
 | Source                                                                            |  n |      prop |
