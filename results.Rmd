@@ -79,8 +79,38 @@ ggplot(my_jn, aes(x = publishing_period)) +
   geom_vline(aes(xintercept = median(publishing_period, na.rm = T)),
              colour = "red", linetype ="dashed", size = .8) +
   theme_minimal_hgrid(12) +
-  scale_x_continuous("Years active", breaks = seq(0,max(my_jn$publishing_period), by = 4)) +
+  scale_x_continuous("Years active") +
   ylab("Journals") 
+```
+
+### Life-span of ceased journals 
+
+```{r}
+my_jn_timeline <- my_jn %>%
+  mutate(start_year = lubridate::year(`Start Year`),
+         end_year = lubridate::year(`End Year`)) %>%
+  filter(!is.na(end_year)) %>%
+  filter(end_year != start_year) %>%
+  ungroup() %>%
+  mutate(jn = fct_reorder(as.factor(`Journal Name`), start_year)) 
+
+
+
+
+ggplot(my_jn_timeline, aes(ymin = start_year, 
+                  ymax = end_year, 
+                  x = reorder(jn, end_year), 
+                  color = end_year)) +
+  geom_linerange() +
+  coord_flip() +
+  labs(x = NULL) +
+  coord_cartesian(ylim = c(1994, 2018)) +
+  scale_color_viridis_c(option = "C", begin = 0, end = 0.8) +
+  scale_y_continuous(breaks = seq(1994, 2020, by =8)) +
+  theme_minimal_hgrid(12) +
+  theme(axis.text.x = element_blank(),
+            axis.ticks.x = element_blank()) +
+  theme(legend.position="none")
 ```
 
 #### by Discipline
@@ -111,6 +141,22 @@ my_jn %>%
   geom_beeswarm(beeswarmArgs=list(side=1)) +
   theme_minimal_hgrid(12) +
   labs(x = NULL, y = "Years active") +
+  scale_colour_brewer(type = "qual", palette = "Set1") +
+  theme(legend.position="none")
+```
+
+Classic boxplot
+
+```{r}
+my_jn %>%
+  filter(!is.na(`Discipline (where more info available)`), `Discipline (where more info available)` != "?") %>%
+  rename(subject = `Discipline (where more info available)`) %>%
+  ggplot(aes(subject, publishing_period, color = subject)) +
+  geom_boxplot(varwidth = TRUE) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  theme_minimal_hgrid(12) +
+  labs(x = NULL, y = "Years active") +
+  coord_cartesian(ylim = c(0, 20)) +
   scale_colour_brewer(type = "qual", palette = "Set1") +
   theme(legend.position="none")
 ```

@@ -10,7 +10,7 @@ spreadsheet.
 
 ### How many journals disappeared?
 
-    #> [1] 202
+    #> [1] 201
 
 ### When did they vanished from the Web?
 
@@ -20,97 +20,107 @@ spreadsheet.
 
 <img src="results_files/figure-gfm/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
 
+### Life-span of ceased journals
+
+<img src="results_files/figure-gfm/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+
 #### by Discipline
 
 Summary table
 
-| subject | n\_journals |     mean | median |  q25 | q75 |
-| :------ | ----------: | -------: | -----: | ---: | --: |
-| Health  |          31 | 8.580645 |    5.0 | 3.00 |  10 |
-| LS      |          27 | 5.740741 |    5.0 | 3.50 |   7 |
-| PSM     |          24 | 6.000000 |    5.5 | 3.75 |   8 |
-| SSH     |          82 | 8.073171 |    6.5 | 4.00 |   9 |
+| subject | n\_journals |     mean | median | q25 | q75 |
+| :------ | ----------: | -------: | -----: | --: | --: |
+| Health  |          29 | 7.931034 |      5 |   3 |  10 |
+| LS      |          26 | 5.884615 |      5 |   4 |   7 |
+| PSM     |          25 | 6.320000 |      6 |   4 |   8 |
+| SSH     |          86 | 8.459770 |      7 |   4 |  10 |
 
 Beeswarm
 plot
 
-<img src="results_files/figure-gfm/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="results_files/figure-gfm/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+
+Classic
+boxplot
+
+<img src="results_files/figure-gfm/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 #### by country
 
-Journals originate from 49 distinct countries.
+Journals originate from 50 distinct countries.
 
-| Country            |  n |       prop |
-| :----------------- | -: | ---------: |
-| United States      | 31 | 18.5628743 |
-| India              | 17 | 10.1796407 |
-| Canada             | 10 |  5.9880240 |
-| Brazil             |  8 |  4.7904192 |
-| United Kingdom     |  8 |  4.7904192 |
-| Australia          |  7 |  4.1916168 |
-| Turkey             |  7 |  4.1916168 |
-| New Zealand        |  6 |  3.5928144 |
-| Spain              |  6 |  3.5928144 |
-| France             |  5 |  2.9940120 |
-| Venezuela          |  5 |  2.9940120 |
-| Germany            |  3 |  1.7964072 |
-| Indonesia          |  3 |  1.7964072 |
-| Italy              |  3 |  1.7964072 |
-| Philippines        |  3 |  1.7964072 |
-| Poland             |  3 |  1.7964072 |
-| Colombia           |  2 |  1.1976048 |
-| Finland            |  2 |  1.1976048 |
-| Iran               |  2 |  1.1976048 |
-| Japan              |  2 |  1.1976048 |
-| Netherlands        |  2 |  1.1976048 |
-| Pakistan           |  2 |  1.1976048 |
-| Portugal           |  2 |  1.1976048 |
-| Romania            |  2 |  1.1976048 |
-| USA                |  2 |  1.1976048 |
-| Argentina          |  1 |  0.5988024 |
-| Azerbaijan         |  1 |  0.5988024 |
-| Bulgaria           |  1 |  0.5988024 |
-| Chile              |  1 |  0.5988024 |
-| China              |  1 |  0.5988024 |
-| Costa Rica         |  1 |  0.5988024 |
-| Czech Republic     |  1 |  0.5988024 |
-| Egypt              |  1 |  0.5988024 |
-| Ghana              |  1 |  0.5988024 |
-| Hong Kong          |  1 |  0.5988024 |
-| Hungary            |  1 |  0.5988024 |
-| Ireland            |  1 |  0.5988024 |
-| Israel             |  1 |  0.5988024 |
-| Mexico             |  1 |  0.5988024 |
-| Nigeria            |  1 |  0.5988024 |
-| Peru               |  1 |  0.5988024 |
-| Puerto Rico        |  1 |  0.5988024 |
-| Russia             |  1 |  0.5988024 |
-| Russian Federation |  1 |  0.5988024 |
-| Switzerland        |  1 |  0.5988024 |
-| Thailand           |  1 |  0.5988024 |
-| UK                 |  1 |  0.5988024 |
-| Ukraine            |  1 |  0.5988024 |
-| Uruguay            |  1 |  0.5988024 |
+| Country            |  n |      prop |
+| :----------------- | -: | --------: |
+| United States      | 34 | 20.118343 |
+| India              | 16 |  9.467456 |
+| Canada             | 10 |  5.917160 |
+| Brazil             |  8 |  4.733728 |
+| United Kingdom     |  8 |  4.733728 |
+| Australia          |  7 |  4.142012 |
+| Turkey             |  7 |  4.142012 |
+| New Zealand        |  6 |  3.550296 |
+| Spain              |  6 |  3.550296 |
+| France             |  5 |  2.958580 |
+| Venezuela          |  4 |  2.366864 |
+| Germany            |  3 |  1.775148 |
+| Indonesia          |  3 |  1.775148 |
+| Philippines        |  3 |  1.775148 |
+| Poland             |  3 |  1.775148 |
+| Chile              |  2 |  1.183432 |
+| Colombia           |  2 |  1.183432 |
+| Finland            |  2 |  1.183432 |
+| Iran               |  2 |  1.183432 |
+| Italy              |  2 |  1.183432 |
+| Japan              |  2 |  1.183432 |
+| Netherlands        |  2 |  1.183432 |
+| Pakistan           |  2 |  1.183432 |
+| Portugal           |  2 |  1.183432 |
+| Romania            |  2 |  1.183432 |
+| USA                |  2 |  1.183432 |
+| Argentina          |  1 |  0.591716 |
+| Azerbaijan         |  1 |  0.591716 |
+| Bulgaria           |  1 |  0.591716 |
+| China              |  1 |  0.591716 |
+| Costa Rica         |  1 |  0.591716 |
+| Czech Republic     |  1 |  0.591716 |
+| Egypt              |  1 |  0.591716 |
+| Ghana              |  1 |  0.591716 |
+| Hong Kong          |  1 |  0.591716 |
+| Hungary            |  1 |  0.591716 |
+| Ireland            |  1 |  0.591716 |
+| Israel             |  1 |  0.591716 |
+| Mexico             |  1 |  0.591716 |
+| Nigeria            |  1 |  0.591716 |
+| Peru               |  1 |  0.591716 |
+| Puerto Rico        |  1 |  0.591716 |
+| Russia             |  1 |  0.591716 |
+| Russian Federation |  1 |  0.591716 |
+| Slovakia           |  1 |  0.591716 |
+| Switzerland        |  1 |  0.591716 |
+| Thailand           |  1 |  0.591716 |
+| UK                 |  1 |  0.591716 |
+| Ukraine            |  1 |  0.591716 |
+| Uruguay            |  1 |  0.591716 |
 
 per Word Bank region
 
-| region                    |  n |       prop |
-| :------------------------ | -: | ---------: |
-| Northern America          | 43 | 25.7485030 |
-| Southern Asia             | 21 | 12.5748503 |
-| South America             | 19 | 11.3772455 |
-| Australia and New Zealand | 13 |  7.7844311 |
-| Northern Europe           | 12 |  7.1856287 |
-| Eastern Europe            | 11 |  6.5868263 |
-| Southern Europe           | 11 |  6.5868263 |
-| Western Europe            | 11 |  6.5868263 |
-| Western Asia              |  9 |  5.3892216 |
-| South-Eastern Asia        |  7 |  4.1916168 |
-| Eastern Asia              |  4 |  2.3952096 |
-| Central America           |  2 |  1.1976048 |
-| Western Africa            |  2 |  1.1976048 |
-| Caribbean                 |  1 |  0.5988024 |
-| Northern Africa           |  1 |  0.5988024 |
+| region                    |  n |      prop |
+| :------------------------ | -: | --------: |
+| Northern America          | 46 | 27.218935 |
+| Southern Asia             | 20 | 11.834319 |
+| South America             | 19 | 11.242604 |
+| Australia and New Zealand | 13 |  7.692308 |
+| Eastern Europe            | 12 |  7.100592 |
+| Northern Europe           | 12 |  7.100592 |
+| Western Europe            | 11 |  6.508876 |
+| Southern Europe           | 10 |  5.917160 |
+| Western Asia              |  9 |  5.325444 |
+| South-Eastern Asia        |  7 |  4.142012 |
+| Eastern Asia              |  4 |  2.366864 |
+| Central America           |  2 |  1.183432 |
+| Western Africa            |  2 |  1.183432 |
+| Caribbean                 |  1 |  0.591716 |
+| Northern Africa           |  1 |  0.591716 |
 
 Suggestion: make a world map similar
 to
@@ -123,14 +133,15 @@ subject
 
 #### by evidence source
 
-| Source                                                                            |  n |       prop |
-| :-------------------------------------------------------------------------------- | -: | ---------: |
-| Ulrichsweb OA Journal Comparison                                                  | 54 | 32.3353293 |
-| DOAJ Removed journals 2012-2014                                                   | 53 | 31.7365269 |
-| Morrison 2016                                                                     | 27 | 16.1676647 |
-| Discovered During Earlier Studies (Laakso et al 2011 and Björk, Shen Laakso 2016) | 18 | 10.7784431 |
-| Scopus OA Journal Comparison                                                      | 14 |  8.3832335 |
-| DOAJ 2010-2012 Comparison                                                         |  1 |  0.5988024 |
+| Source                                                                            |  n |      prop |
+| :-------------------------------------------------------------------------------- | -: | --------: |
+| Ulrichsweb OA Journal Comparison                                                  | 55 | 32.544379 |
+| DOAJ Removed journals 2012-2014                                                   | 51 | 30.177515 |
+| Morrison 2016                                                                     | 27 | 15.976331 |
+| Discovered During Earlier Studies (Laakso et al 2011 and Björk, Shen Laakso 2016) | 17 | 10.059172 |
+| Scopus OA Journal Comparison                                                      | 13 |  7.692308 |
+| DOAJ 2019                                                                         |  5 |  2.958580 |
+| DOAJ 2010-2012 Comparison                                                         |  1 |  0.591716 |
 
 ### Archives
 
@@ -139,17 +150,12 @@ The Keepers by subject
 | subject | The Keepers (archived) | n\_journals |
 | :------ | :--------------------- | ----------: |
 | Health  | No                     |          28 |
-| Health  | Yes all                |           1 |
-| Health  | Yes but couldn’t find  |           1 |
-| Health  | Yes, couldn’t find     |           1 |
+| Health  | Yes                    |           1 |
+| LS      | NA                     |           1 |
 | LS      | No                     |          22 |
-| LS      | Yes all                |           2 |
-| LS      | Yes, couldn’t find     |           2 |
-| LS      | Yes, partially         |           1 |
-| PSM     | No                     |          22 |
+| LS      | Yes                    |           3 |
+| PSM     | No                     |          24 |
 | PSM     | Yes                    |           1 |
-| PSM     | Yes all                |           1 |
-| SSH     | No                     |          78 |
-| SSH     | Yes                    |           1 |
-| SSH     | Yes all                |           2 |
-| SSH     | Yes, couldn’t find     |           1 |
+| SSH     | NA                     |           1 |
+| SSH     | No                     |          82 |
+| SSH     | Yes                    |           3 |
