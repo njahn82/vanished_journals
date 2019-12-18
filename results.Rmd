@@ -213,7 +213,7 @@ p +
     color = NA
   )  +
  # scale_fill_brewer("Journal Subject", palette = "Set1") +
-  scale_fill_manual(values = c("#FAAB18", "#1380A1","#990000", "#588300")) +
+  scale_fill_manual("Journal Subject", values = c("#FAAB18", "#1380A1","#990000", "#588300")) +
   labs(x = NULL, y = NULL) +
   coord_equal() +
   theme_minimal() +
