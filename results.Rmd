@@ -99,7 +99,7 @@ my_jn_timeline <- my_jn %>%
 
 ggplot(my_jn_timeline, aes(ymin = start_year, 
                   ymax = end_year, 
-                  x = reorder(jn, -end_year), 
+                  x = reorder(jn, end_year), 
                   color = end_year)) +
   coord_flip(ylim = c(1990, 2018)) +
   geom_linerange() +
