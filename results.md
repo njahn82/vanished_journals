@@ -18,6 +18,14 @@ Curie-Sklodowska - Sectio D. Medicina” that was actively publishing
 between 1946 and 2010 and the “Durham Anthropological Journal”
 (publication period: 1970 – 2013).
 
+#### Table Figure 2
+
+|            | 2000 | 2001     | 2002     | 2004     | 2005     | 2006     | 2007     | 2008     | 2009     | 2010      | 2011     | 2012     | 2013      | 2014     | 2015     | 2016     | 2017     | 2018      |  Total |
+| ---------- | :--- | :------- | :------- | :------- | :------- | :------- | :------- | :------- | :------- | :-------- | :------- | :------- | :-------- | :------- | :------- | :------- | :------- | :-------- | -----: |
+| Journals   | 1    | 4        | 5        | 5        | 3        | 4        | 6        | 10       | 7        | 23        | 31       | 23       | 12        | 14       | 14       | 9        | 10       | 2         | 183.00 |
+| Median Age | 4.0  | 2.0      | 6.0      | 7.0      | 2.0      | 5.0      | 4.5      | 5.5      | 3.0      | 5.0       | 5.0      | 4.0      | 5.0       | 3.0      | 5.0      | 11.0     | 9.5      | 17.0      |   5.00 |
+| SD         | NA   | 2.500000 | 1.788854 | 2.549510 | 3.785939 | 4.546061 | 3.559026 | 4.104198 | 3.804759 | 12.697919 | 4.472136 | 4.367957 | 13.344787 | 3.196839 | 3.400873 | 5.873670 | 5.473167 | 18.384776 |   7.12 |
+
 ### What is the country and research discipline distribution of these journals?
 
 Figure 2 presents a breakdown of the journal’s life-span by academic
@@ -29,7 +37,15 @@ and Humanities domain (SSH), followed by Health Sciences (Health) (16.6
 %), Physical Sciences and Mathematics (PSM) (14.5 %) and Life Sciences
 (13.5 %) .
 
-<img src="results_files/figure-gfm/unnamed-chunk-6-1.png" title="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." alt="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." width="70%" style="display: block; margin: auto;" />
+<img src="results_files/figure-gfm/unnamed-chunk-7-1.png" title="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." alt="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." width="70%" style="display: block; margin: auto;" />
+
+#### Table Figure 3
+
+|            | Health    | LS       | PSM      | SSH      |  Total |
+| ---------- | :-------- | :------- | :------- | :------- | -----: |
+| Journals   | 32        | 26       | 28       | 94       | 183.00 |
+| Median Age | 4.0       | 5.0      | 4.5      | 6.0      |   5.00 |
+| SD         | 11.160802 | 3.981689 | 3.985423 | 6.829123 |   7.12 |
 
 Overall, journals originate from 55 distinct countries. Figure 3
 presents the geographic distribution of the vanished journals in terms
@@ -39,7 +55,7 @@ and European regions mostly open access journals from the social
 sciences and humanities vanished, in the region Southern Asia
 life-science journals were well represented.
 
-<img src="results_files/figure-gfm/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="results_files/figure-gfm/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### What is the lag between last journal activity year and year of vanishing?
 
@@ -56,4 +72,4 @@ science journal “African Journal of Environmental Assessment and
 Management”, which actively published between 1999-2008 and vanished in
 2018.
 
-<img src="results_files/figure-gfm/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="results_files/figure-gfm/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
