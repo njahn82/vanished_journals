@@ -40,3 +40,20 @@ sciences and humanities vanished, in the region Southern Asia
 life-science journals were well represented.
 
 <img src="results_files/figure-gfm/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+
+### What is the lag between last journal activity year and year of vanishing?
+
+Using the Internet Archive’s Wayback Machine, we were able not just to
+record the last journal activity year, but also the time when the
+journal vanished, i.e. the last year this web archive was able to get
+hold of a snapshot of the website. Figure summarizes the lag between the
+last journal’s volume and disappearance from the web in years. Most
+journals vanished one year after the last journal volume. The median
+time span until vanishing was two years. Within four years after
+publishing the last volume, around 75 % of the studied journals
+vanished. An exception is, for instances, the Ghanian environmental
+science journal “African Journal of Environmental Assessment and
+Management”, which actively published between 1999-2008 and vanished in
+2018.
+
+<img src="results_files/figure-gfm/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
