@@ -1,16 +1,8 @@
 region,lat,long
-Northern America,48.367222,-99.996111
-South America,-15.600713,-56.100920
-Southern Asia,28.644800, 77.216721
-Northern Europe,59.334591,18.063240
-Eastern Europe,55.751244,37.618423
-Southern Europe,41.902782,12.496366
-Western Europe,48.864716,2.349014
-Australia and New Zealand,-37.840935,144.946457
-South-Eastern Asia,-2.46625,117.996111
-Western Asia,35.715298,51.404343
-Eastern Asia,39.913818,116.363625
-Caribbean,20.02472,-75.82194
-Central America,14.081999,-87.202438
-Northern Africa,23.806078,11.288452
-Western Africa,6.465422,3.406448
+North America,48.367222,-99.996111
+East Asia & Pacific,10,120.9808
+Europe & Central Asia,53.0000,5.0000
+Latin America & Caribbean,-15.600713,-56.100920
+Sub-Saharan Africa,0,30
+South Asia,28.644800, 77.216721
+Middle East & North Africa,31.268205,29.995368
