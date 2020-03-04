@@ -1,0 +1,211 @@
+---
+title: "Results Vanished Journals"
+output: 
+  github_document
+---
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.width = 6,
+  fig.asp = 0.618,
+  out.width = "70%",
+  fig.align = "center",
+  dpi = 300
+)
+```
+
+```{r}
+library(tidyverse)
+library(googledrive)
+library(cowplot)
+googledrive::drive_download(
+  googledrive::as_id("https://docs.google.com/spreadsheets/d/1M8WdNFpT8Xd-Bj7Eo_4Qcj-jBOdKQhRNxOHj1ckC0n0/edit#gid=0"), 
+  path = "data/vanished_journals.xlsx",
+  overwrite = TRUE
+  )
+jn_raw <- readxl::read_xlsx("data/vanished_journals.xlsx")
+#' date transformation
+my_jn <- jn_raw %>%
+  mutate_at(vars(contains("Year")), as.character) %>%
+  mutate_at(vars(contains("Year")), function(x) gsub(".0", "", x, fixed = TRUE)) %>%
+  mutate_at(vars(contains("Year")), function(x) lubridate::parse_date_time(x, c('y')))
+```
+
+### For how long were the journals actively publishing?
+
+```{r}
+my_jn_timeline <- my_jn %>%
+  mutate(start_year = lubridate::year(`Start Year`),
+         end_year = lubridate::year(`End Year`)) %>%
+  filter(!is.na(end_year)) %>%
+ ## filter(end_year != start_year) %>%
+  ungroup() %>%
+  mutate(jn = fct_reorder(as.factor(`Journal Name`), start_year)) %>%
+  mutate(duration = (end_year - start_year) + 1)
+```
+
+We determined `r nrow(my_jn)` fully open access journals that vanished from the web between 2000 and 2018. Figure 1 presents the life-span of these ceased journals. The majority of journals from our sample stopped actively publishing during 2010 and 2018 (N = `r my_jn_timeline %>% filter(end_year > 2009) %>% nrow()`).
+
+```{r, fig.cap="Publication history of vanished fully open access journals. Each line represents a journal. The line ranges represent the time period between the first and the last year of publication. Lines are ordered by the last year of publication per Journal. X-Axis is limited to the start year 1990."}
+my_jn_timeline %>%
+  filter(end_year != start_year) %>%
+  ggplot(aes(ymin = start_year, 
+                  ymax = end_year, 
+                  x = reorder(jn, end_year), 
+                  color = end_year)) +
+  coord_flip(ylim = c(1990, 2018)) +
+  geom_linerange() +
+  labs(y = "Publication history", x = "Vanished OA Journals") +
+  scale_color_viridis_c("Last year\nof publication", option = "C", begin = 0, end = 0.8) +
+  scale_y_continuous(breaks = seq(1990, 2020, by =4)) +
+  theme_minimal_vgrid(12) +
+  theme(axis.text.y = element_blank(),
+            axis.ticks.y = element_blank()) 
+```
+
+
+On average, journals were active for around `r round(mean(my_jn_timeline$duration))` years. While we observed journals with a long history of publication, the majority of journals actively published five or less yearly issues (Median = `r median(my_jn_timeline$duration)`). Among these journals are the life-science journal "Annales Universitatis Mariae Curie-Sklodowska - Sectio D. Medicina" that was actively publishing between `r my_jn_timeline %>% filter(jn == "Annales Universitatis Mariae Curie-Sklodowska - Sectio D. Medicina") %>% .$start_year` and `r my_jn_timeline %>% filter(jn == "Annales Universitatis Mariae Curie-Sklodowska - Sectio D. Medicina") %>% .$end_year` and the "Durham Anthropological Journal" (publication period: `r my_jn_timeline %>% filter(jn == "Durham Anthropological Journal") %>% .$start_year` -- `r my_jn_timeline %>% filter(jn == "Durham Anthropological Journal") %>% .$end_year`).
+
+#### Table Figure 2
+
+```{r}
+library(janitor)
+table_1 <- my_jn_timeline %>% 
+  group_by(end_year) %>% 
+  summarise(n = n(), median_dur = median(duration), sd_dur = sd(duration)) %>%
+  ungroup() %>%
+  mutate(end_year = as.character(end_year)) %>% 
+  t() %>% 
+  as_tibble() %>%
+  row_to_names(row_number = 1)
+Total <- c(nrow(my_jn_timeline), median(my_jn_timeline$duration), sd(my_jn_timeline$duration))
+duration_table <- cbind(table_1, Total)
+row.names(duration_table) <- c("Journals", "Median Age", "SD") 
+knitr::kable(duration_table, digits = 2)
+```
+
+### What is the country and research discipline distribution of these journals?
+
+```{r}
+subject_df <- my_jn_timeline %>%
+  filter(!`Discipline Group` %in% c("?", "NA")) %>%
+  rename(subject = `Discipline Group`)
+```
+
+Figure 2 presents a breakdown of the journal's life-span by academic discipline, highligthing that the life-span of journals slightly varies across displines. Furthermore, it shows that vanishing from the web was not limited to one field, but occured across disciplines. Around `r round(subject_df %>% filter(subject == "SSH") %>% nrow() / nrow(my_jn) * 100, 1)` % of journals belonged to the Social Sciences and Humanities domain (SSH), followed by Health Sciences (Health) (`r round(subject_df %>% filter(subject == "Health") %>% nrow() / nrow(my_jn) * 100, 1)` %), Physical Sciences and Mathematics (PSM)  (`r round(subject_df %>% filter(subject == "PSM") %>% nrow() / nrow(my_jn) * 100, 1)` %) and Life Sciences (`r round(subject_df %>% filter(subject == "LS") %>% nrow() / nrow(my_jn) * 100, 1)` %) .
+
+```{r, fig.cap="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span."}
+  ggplot(subject_df, aes(subject, duration, color = subject)) +
+  geom_boxplot(varwidth = TRUE) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  theme_minimal_hgrid(12) +
+  labs(x = "Subject domain", y = "Life-span in years") +
+  coord_cartesian(ylim = c(0, 20)) +
+  scale_color_manual("Journal Subject", values = c("#65BADA", "#00A757", "#E5BA52", "#D86F27")) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
+  theme(legend.position="none")
+```
+
+#### Table Figure 3
+
+```{r}
+subject_table <- subject_df %>%
+  group_by(subject) %>% 
+  summarise(n = n(), median_dur = median(duration), sd_dur = sd(duration)) %>%
+  ungroup() %>%
+  t() %>% 
+  as_tibble() %>%
+  row_to_names(row_number = 1)
+Total <- c(nrow(my_jn_timeline), median(my_jn_timeline$duration), sd(my_jn_timeline$duration))
+duration_table <- cbind(subject_table, Total)
+row.names(duration_table) <- c("Journals", "Median Age", "SD") 
+knitr::kable(duration_table, digits = 2)
+```
+
+Overall, journals originate from `r length(unique(my_jn$Country))` distinct countries. Figure 3 presents the geographic distribution of the vanished journals in terms of World Bank regions, highlighting that the phenomena is global. Yet, subject-specific differences can be observed. While in Northern American and European regions mostly open access journals from the social sciences and humanities vanished, in the region Southern Asia life-science journals were well represented.
+
+
+```{r}
+# map subjects to world bank regions
+# load world bank classification
+wb_df <- readxl::read_xls("data/CLASS.xls", skip = 4) %>%
+  select(Economy, Code, Region, income_group =  `Income group`) %>%
+  right_join(subject_df, by = c("Economy" = "Country")) 
+map_data <- subject_df %>% 
+  mutate(region = countrycode::countrycode(Country, "country.name", "region")) %>%
+  count(region, subject, sort = TRUE) 
+# manual lat long mapping regions
+# map_data %>%
+#   distinct(region) %>%
+#   write_csv("region_lat_long.csv")
+latlong <- readr::read_csv("region_lat_long.csv")
+tmp <- inner_join(map_data, latlong, by = "region") %>%
+  spread(subject, n) %>%
+  mutate_at(c(4:7), ~replace(., is.na(.), 0)) %>%
+  mutate(all_n = Health + LS + PSM + SSH)
+world <- map_data("world")  %>%
+  # without Antartica
+  filter(region != "Antarctica")
+p <- 
+  ggplot(world, aes(long, lat)) +
+  geom_map(
+    map = world,
+    aes(map_id = region),
+    color = "white",
+    size = 0.1,
+    fill  = "#b3b3b3a0"
+  ) +
+  coord_sf() 
+p +
+  scatterpie::geom_scatterpie(
+    aes(long, lat, r = sqrt(all_n) * 3),
+    data = tmp,
+    cols = c("Health", "LS", "PSM", "SSH"),
+    alpha = .8,
+    color = NA
+  )  +
+ # scale_fill_brewer("Journal Subject", palette = "Dark2") +
+  scale_fill_manual("Journal Subject", values = c("#65BADA", "#00A757", "#E5BA52", "#D86F27")) +
+  labs(x = NULL, y = NULL) +
+  coord_equal() +
+  theme_minimal() +
+  theme(plot.margin = margin(10, 30, 10, 30)) +
+  theme(panel.grid.minor = element_blank()) +
+  theme(axis.ticks = element_blank()) +
+  theme(panel.grid.major = element_blank()) +
+  theme(panel.border = element_blank()) +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank()) +
+  theme(legend.position = "top",
+        legend.justification = "center") +
+  theme(legend.text = element_text(size = 7.5))
+```
+
+### What is the lag between last journal activity year and year of vanishing?
+
+```{r}
+my_jn_online_availability <-
+  my_jn %>%
+  mutate(online_last_year = lubridate::year(`Last Year Online`),
+         end_year = lubridate::year(`End Year`)) %>%
+  filter(!is.na(end_year))  %>%
+  mutate(lag_archiving = online_last_year - end_year)
+```
+
+Using the Internet Archive’s Wayback Machine, we were able not just to record the last journal activity year, but also the time when the journal vanished, i.e. the last year  this web archive was able to get hold of a snapshot of the website. Figure summarizes the lag between the last journal's volume and disappearance from the web in years. Most journals vanished one year after the last journal volume. The median time span until vanishing was two years. Within four years after publishing the last volume, around 75 % of the studied journals vanished. An exception is, for instances, the Ghanian environmental science journal "African Journal of Environmental Assessment and Management", which actively published between 1999-2008 and vanished in 2018.
+
+```{r, fig.cap=""}
+ggplot(my_jn_online_availability, aes(x = lag_archiving)) +
+  geom_histogram(stat = "count", fill="#56B4E9") +
+  geom_vline(aes(xintercept = median(lag_archiving, na.rm = T)),
+             colour = "#E69F00", linetype ="dashed", size = .8) +
+  theme_minimal_hgrid(12) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
+  scale_x_discrete(limits = c(0:11)) +
+  labs(y = "Journals", x = " Lag between last journal activity and vanishing (in years)")
+```
