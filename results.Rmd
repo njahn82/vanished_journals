@@ -92,8 +92,11 @@ knitr::kable(duration_table, digits = 2)
 ### What is the country and research discipline distribution of these journals?
 
 ```{r}
-subject_df <- my_jn_timeline %>%
+subject_df <- my_jn %>%
+  mutate(start_year = lubridate::year(`Start Year`),
+         end_year = lubridate::year(`End Year`)) %>%
   filter(!`Discipline Group` %in% c("?", "NA")) %>%
+  mutate(duration = (end_year - start_year) + 1) %>%
   rename(subject = `Discipline Group`)
 ```
 
@@ -116,12 +119,12 @@ Figure 2 presents a breakdown of the journal's life-span by academic discipline,
 ```{r}
 subject_table <- subject_df %>%
   group_by(subject) %>% 
-  summarise(n = n(), median_dur = median(duration), sd_dur = sd(duration)) %>%
+  summarise(n = n(), median_dur = median(duration, na.rm = TRUE), sd_dur = round(sd(duration, na.rm = TRUE), 2)) %>%
   ungroup() %>%
   t() %>% 
   as_tibble() %>%
   row_to_names(row_number = 1)
-Total <- c(nrow(my_jn_timeline), median(my_jn_timeline$duration), round(sd(my_jn_timeline$duration),2 ))
+Total <- c(nrow(my_jn_timeline), median(my_jn_timeline$duration, na.rm = TRUE), round(sd(my_jn_timeline$duration, na.rm = TRUE),2 ))
 duration_table <- cbind(subject_table, Total)
 row.names(duration_table) <- c("Journals", "Median Age", "SD") 
 knitr::kable(duration_table, digits = 2)
@@ -194,6 +197,7 @@ p +
 ```{r}
 janitor::tabyl(wb_df, region, subject) %>%
   adorn_totals(c("row", "col")) %>%
+  mutate(`Proportion (in %)` = round(Total / nrow(my_jn) * 100, 2)) %>%
   knitr::kable()
 ```
 
@@ -231,4 +235,16 @@ ggplot(my_jn_online_availability, aes(x = lag_archiving)) +
   scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
   scale_x_discrete(limits = c(0:11)) +
   labs(y = "Journals", x = " Lag between final journal issue and vanishing (in years)")
+```
+
+
+```{r}
+my_jn_online_availability %>%
+  count(lag_archiving) %>%
+  mutate(prop = n / sum(n)) %>%
+  mutate(cumprop = cumsum(prop)) %>%
+  adorn_totals() %>%
+  mutate(prop = round(prop, 2) * 100) %>%
+  mutate(cumprop = round(cumprop, 2) * 100) %>%
+  knitr::kable(col.names = c("Lag (in years)", "Journals", "Proportion (in%)", "Cumulative Percentage"))
 ```

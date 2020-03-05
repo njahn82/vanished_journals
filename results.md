@@ -49,17 +49,17 @@ across displines. Furthermore, it shows that vanishing from the web was
 not limited to one field, but occured across disciplines. Around 51.8 %
 of journals belonged to the Social Sciences and Humanities domain (SSH),
 followed by Health Sciences (Health) (17.6 %), Physical Sciences and
-Mathematics (PSM) (16.6 %) and Life Sciences (13.5 %) .
+Mathematics (PSM) (17.1 %) and Life Sciences (13.5 %) .
 
 <img src="results_files/figure-gfm/unnamed-chunk-7-1.png" title="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." alt="Life-span distribution of vanished fully open access journals across subject domains, in years. Each point represent a journal and its life-span." width="70%" style="display: block; margin: auto;" />
 
 #### Table Figure 3
 
-|            | Health    | LS       | PSM      | SSH      |  Total |
-| ---------- | :-------- | :------- | :------- | :------- | -----: |
-| Journals   | 34        | 26       | 32       | 100      | 192.00 |
-| Median Age | 5.0       | 6.0      | 5.0      | 6.5      |   6.00 |
-| SD         | 10.953841 | 3.981689 | 4.162888 | 6.903929 |   7.14 |
+|            | Health | LS   | PSM  | SSH  |  Total |
+| ---------- | :----- | :--- | :--- | :--- | -----: |
+| Journals   | 34     | 26   | 33   | 100  | 192.00 |
+| Median Age | 5.0    | 6.0  | 5.0  | 6.5  |   6.00 |
+| SD         | 10.95  | 3.98 | 4.16 | 6.90 |   7.14 |
 
 Overall, journals originate from 50 distinct countries. Figure 3
 presents the geographic distribution of the vanished journals in terms
@@ -73,16 +73,16 @@ life-science journals were well represented.
 
 ### Table Figure 4
 
-| region                     | Health | LS | PSM | SSH | Total |
-| :------------------------- | -----: | -: | --: | --: | ----: |
-| East Asia & Pacific        |      7 |  2 |   6 |   7 |    22 |
-| Europe & Central Asia      |     11 |  3 |  10 |  38 |    62 |
-| Latin America & Caribbean  |      4 |  2 |   6 |  14 |    26 |
-| Middle East & North Africa |      3 |  1 |   1 |   2 |     7 |
-| North America              |      4 |  4 |   6 |  35 |    49 |
-| South Asia                 |      4 | 13 |   4 |   4 |    25 |
-| Sub-Saharan Africa         |      1 |  1 |   0 |   0 |     2 |
-| Total                      |     34 | 26 |  33 | 100 |   193 |
+| region                     | Health | LS | PSM | SSH | Total | Proportion (in %) |
+| :------------------------- | -----: | -: | --: | --: | ----: | ----------------: |
+| East Asia & Pacific        |      7 |  2 |   6 |   7 |    22 |             11.40 |
+| Europe & Central Asia      |     11 |  3 |  10 |  38 |    62 |             32.12 |
+| Latin America & Caribbean  |      4 |  2 |   6 |  14 |    26 |             13.47 |
+| Middle East & North Africa |      3 |  1 |   1 |   2 |     7 |              3.63 |
+| North America              |      4 |  4 |   6 |  35 |    49 |             25.39 |
+| South Asia                 |      4 | 13 |   4 |   4 |    25 |             12.95 |
+| Sub-Saharan Africa         |      1 |  1 |   0 |   0 |     2 |              1.04 |
+| Total                      |     34 | 26 |  33 | 100 |   193 |            100.00 |
 
 Table presents the geographic distribution by income group. All vanished
 journals in our sample originated from high or middle income countries.
@@ -109,3 +109,19 @@ journal “African Journal of Environmental Assessment and Management”,
 which actively published between 1999-2008 and vanished in 2018.
 
 <img src="results_files/figure-gfm/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+
+| Lag (in years) | Journals | Proportion (in%) | Cumulative Percentage |
+| :------------- | -------: | ---------------: | --------------------: |
+| 0              |       29 |               15 |                    15 |
+| 1              |       53 |               28 |                    43 |
+| 2              |       30 |               16 |                    58 |
+| 3              |       26 |               14 |                    72 |
+| 4              |       15 |                8 |                    80 |
+| 5              |       13 |                7 |                    86 |
+| 6              |        9 |                5 |                    91 |
+| 7              |        4 |                2 |                    93 |
+| 8              |        6 |                3 |                    96 |
+| 9              |        1 |                1 |                    97 |
+| 10             |        5 |                3 |                    99 |
+| 11             |        1 |                1 |                   100 |
+| Total          |      192 |              100 |                   931 |
