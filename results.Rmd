@@ -23,11 +23,11 @@ knitr::opts_chunk$set(
 library(tidyverse)
 library(googledrive)
 library(cowplot)
-# googledrive::drive_download(
-#   googledrive::as_id("https://docs.google.com/spreadsheets/d/1M8WdNFpT8Xd-Bj7Eo_4Qcj-jBOdKQhRNxOHj1ckC0n0/edit#gid=0"), 
-#   path = "data/vanished_journals.xlsx",
-#   overwrite = TRUE
-#   )
+googledrive::drive_download(
+  googledrive::as_id("https://docs.google.com/spreadsheets/d/1M8WdNFpT8Xd-Bj7Eo_4Qcj-jBOdKQhRNxOHj1ckC0n0/edit#gid=0"),
+  path = "data/vanished_journals.xlsx",
+  overwrite = TRUE
+  )
 jn_raw <- readxl::read_xlsx("data/vanished_journals.xlsx")
 #' date transformation
 my_jn <- jn_raw %>%

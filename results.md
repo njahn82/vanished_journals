@@ -29,7 +29,7 @@ between 1946 and 2010 and the “Durham Anthropological Journal”
 | 2006                  | 4        | 6          | 4.55  |
 | 2007                  | 7        | 5          | 3.82  |
 | 2008                  | 10       | 6.5        | 4.1   |
-| 2009                  | 8        | 4          | 3.92  |
+| 2009                  | 9        | 4          | 6.96  |
 | 2010                  | 27       | 6          | 12    |
 | 2011                  | 33       | 6          | 4.57  |
 | 2012                  | 23       | 5          | 4.37  |
@@ -39,7 +39,7 @@ between 1946 and 2010 and the “Durham Anthropological Journal”
 | 2016                  | 9        | 12         | 5.87  |
 | 2017                  | 10       | 10.5       | 5.47  |
 | 2018                  | 2        | 18         | 18.38 |
-| Total                 | 192      | 6          | 7.14  |
+| Total                 | 193      | 6          | 7.2   |
 
 ### What is the country and research discipline distribution of these journals?
 
@@ -55,11 +55,11 @@ Mathematics (PSM) (17.1 %) and Life Sciences (13.5 %) .
 
 #### Table Figure 3
 
-|            | Health | LS   | PSM  | SSH  |  Total |
-| ---------- | :----- | :--- | :--- | :--- | -----: |
-| Journals   | 34     | 26   | 33   | 100  | 192.00 |
-| Median Age | 5.0    | 6.0  | 5.0  | 6.5  |   6.00 |
-| SD         | 10.95  | 3.98 | 4.16 | 6.90 |   7.14 |
+|            | Health | LS   | PSM  | SSH  | Total |
+| ---------- | :----- | :--- | :--- | :--- | ----: |
+| Journals   | 34     | 26   | 33   | 100  | 193.0 |
+| Median Age | 5.0    | 6.0  | 5.0  | 6.5  |   6.0 |
+| SD         | 10.95  | 3.98 | 5.02 | 6.90 |   7.2 |
 
 Overall, journals originate from 50 distinct countries. Figure 3
 presents the geographic distribution of the vanished journals in terms
@@ -113,15 +113,15 @@ which actively published between 1999-2008 and vanished in 2018.
 | Lag (in years) | Journals | Proportion (in%) | Cumulative Percentage |
 | :------------- | -------: | ---------------: | --------------------: |
 | 0              |       29 |               15 |                    15 |
-| 1              |       53 |               28 |                    43 |
+| 1              |       53 |               27 |                    42 |
 | 2              |       30 |               16 |                    58 |
-| 3              |       26 |               14 |                    72 |
+| 3              |       27 |               14 |                    72 |
 | 4              |       15 |                8 |                    80 |
-| 5              |       13 |                7 |                    86 |
+| 5              |       13 |                7 |                    87 |
 | 6              |        9 |                5 |                    91 |
 | 7              |        4 |                2 |                    93 |
 | 8              |        6 |                3 |                    96 |
 | 9              |        1 |                1 |                    97 |
 | 10             |        5 |                3 |                    99 |
 | 11             |        1 |                1 |                   100 |
-| Total          |      192 |              100 |                   931 |
+| Total          |      193 |              100 |                   931 |
