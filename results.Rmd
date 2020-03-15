@@ -58,7 +58,7 @@ my_jn_timeline %>%
                   ymax = end_year, 
                   x = reorder(jn, end_year), 
                   color = end_year)) +
-  coord_flip(ylim = c(1990, 2018)) +
+  coord_flip(ylim = c(1990, 2019)) +
   geom_linerange() +
   labs(y = "Publication activity", x = "Vanished OA Journals") +
   scale_color_viridis_c("Last year\nof publication", option = "C", begin = 0, end = 0.8) +
@@ -248,3 +248,25 @@ my_jn_online_availability %>%
   mutate(cumprop = round(cumprop, 2) * 100) %>%
   knitr::kable(col.names = c("Lag (in years)", "Journals", "Proportion (in%)", "Cumulative Percentage"))
 ```
+
+
+### Language
+
+```{r}
+my_jn_timeline %>%
+  select( `Language(s)`, duration) %>%
+  mutate(language_cat = case_when(
+    `Language(s)` == "English" ~ "English",
+    grepl("English", `Language(s)`, fixed = TRUE) ~ "Multiple languages including English",
+    !grepl("English", `Language(s)`, fixed = TRUE) ~ "Non-English"
+  )) %>%
+  group_by(language_cat) %>%
+  summarise(n = n(),
+            mean_dur = mean(duration),
+            sd = sd(duration)) %>%
+  mutate(prop = n / sum(n) * 100) %>%
+  select(`Journal Language(s)` = 1, `Vanished Journals` = n, `Proportion (in %)` = prop, `Mean Age (in years)` = mean_dur, SD = sd) %>%
+  knitr::kable(digits = 2)
+```
+
+Table presents a breakdown of vanished journals by the journal's language relative to the publication activity in years. Most vanished journals in our sample published English-language articles, while around 30 % of journals also dissemianted non-English-langauge research articles. We found no notable difference between the language of the journals and their age.

@@ -125,3 +125,18 @@ which actively published between 1999-2008 and vanished in 2018.
 | 10             |        5 |                3 |                    99 |
 | 11             |        1 |                1 |                   100 |
 | Total          |      193 |              100 |                   931 |
+
+### Language
+
+| Journal Language(s)                  | Vanished Journals | Proportion (in %) | Mean Age (in years) |   SD |
+| :----------------------------------- | ----------------: | ----------------: | ------------------: | ---: |
+| English                              |               133 |             68.91 |                7.47 | 7.57 |
+| Multiple languages including English |                30 |             15.54 |                7.60 | 5.51 |
+| Non-English                          |                30 |             15.54 |                8.63 | 7.13 |
+
+Table presents a breakdown of vanished journals by the journal’s
+language relative to the publication activity in years. Most vanished
+journals in our sample published English-language articles, while around
+30 % of journals also dissemianted non-English-langauge research
+articles. We found no notable difference between the language of the
+journals and their age.
