@@ -140,3 +140,7 @@ journals in our sample published English-language articles, while around
 30 % of journals also dissemianted non-English-langauge research
 articles. We found no notable difference between the language of the
 journals and their age.
+
+Finally, we also looked for the journal affiliation and found that 119
+journals were either affilated with a society (N = 24) or with other
+kinds of research organisation such as a university (N = 94).
