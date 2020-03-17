@@ -257,7 +257,7 @@ my_jn_timeline %>%
   select( `Language(s)`, duration) %>%
   mutate(language_cat = case_when(
     `Language(s)` == "English" ~ "English",
-    grepl("English", `Language(s)`, fixed = TRUE) ~ "Multiple languages including English",
+    grepl("English", `Language(s)`, fixed = TRUE) ~ "Mixed",
     !grepl("English", `Language(s)`, fixed = TRUE) ~ "Non-English"
   )) %>%
   group_by(language_cat) %>%
@@ -265,7 +265,7 @@ my_jn_timeline %>%
             mean_dur = mean(duration),
             sd = sd(duration)) %>%
   mutate(prop = n / sum(n) * 100) %>%
-  select(`Journal Language(s)` = 1, `Vanished Journals` = n, `Proportion (in %)` = prop, `Mean Age (in years)` = mean_dur, SD = sd) %>%
+  select(`Journal Language` = 1, `Vanished Journals` = n, `Proportion (in %)` = prop, `Mean Age (in years)` = mean_dur, SD = sd) %>%
   knitr::kable(digits = 2)
 ```
 

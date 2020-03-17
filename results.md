@@ -128,11 +128,11 @@ which actively published between 1999-2008 and vanished in 2018.
 
 ### Language
 
-| Journal Language(s)                  | Vanished Journals | Proportion (in %) | Mean Age (in years) |   SD |
-| :----------------------------------- | ----------------: | ----------------: | ------------------: | ---: |
-| English                              |               133 |             68.91 |                7.47 | 7.57 |
-| Multiple languages including English |                30 |             15.54 |                7.60 | 5.51 |
-| Non-English                          |                30 |             15.54 |                8.63 | 7.13 |
+| Journal Language | Vanished Journals | Proportion (in %) | Mean Age (in years) |   SD |
+| :--------------- | ----------------: | ----------------: | ------------------: | ---: |
+| English          |               133 |             68.91 |                7.47 | 7.57 |
+| Mixed            |                29 |             15.03 |                7.31 | 5.37 |
+| Non-English      |                31 |             16.06 |                8.87 | 7.13 |
 
 Table presents a breakdown of vanished journals by the journal’s
 language relative to the publication activity in years. Most vanished
