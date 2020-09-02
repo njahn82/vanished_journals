@@ -28,7 +28,7 @@ googledrive::drive_download(
   path = "data/vanished_journals.xlsx",
   overwrite = TRUE
   )
-jn_raw <- readxl::read_xlsx("data/vanished_journals.xlsx")
+jn_raw <- readxl::read_xlsx("data/vanished_journals.xlsx", sheet = "Disappeared")
 #' date transformation
 my_jn <- jn_raw %>%
   mutate_at(vars(contains("Year")), as.character) %>%
