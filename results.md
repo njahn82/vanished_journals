@@ -44,16 +44,16 @@ between 1946 and 2010 and the “Durham Anthropological Journal”
 | 2007                  | 6        | 4          | 2.81  |
 | 2008                  | 7        | 5          | 2.73  |
 | 2009                  | 9        | 3          | 2     |
-| 2010                  | 25       | 5          | 12.47 |
+| 2010                  | 24       | 5.5        | 12.69 |
 | 2011                  | 31       | 4          | 4.47  |
 | 2012                  | 24       | 6          | 3.69  |
 | 2013                  | 18       | 5          | 9.89  |
 | 2014                  | 15       | 4          | 3.18  |
 | 2015                  | 12       | 6          | 1.6   |
-| 2016                  | 5        | 8          | 4.39  |
+| 2016                  | 6        | 8          | 3.98  |
 | 2017                  | 7        | 9          | 3.6   |
 | 2018                  | 2        | 18         | 18.38 |
-| Total                 | 176      | 5          | 6.73  |
+| Total                 | 176      | 5          | 6.72  |
 
 ### What is the country and research discipline distribution of these journals?
 
@@ -85,7 +85,7 @@ life-span.
 | ---------- | :----- | :--- | :--- | :--- | -----: |
 | Journals   | 29     | 26   | 29   | 92   | 176.00 |
 | Median Age | 5      | 6    | 5    | 6    |   5.00 |
-| SD         | 11.60  | 2.74 | 3.32 | 6.26 |   6.73 |
+| SD         | 11.60  | 2.74 | 3.32 | 6.24 |   6.72 |
 
 Overall, journals originate from 47 distinct countries. Figure 3
 presents the geographic distribution of the vanished journals in terms
@@ -129,19 +129,19 @@ hold of a snapshot of the website. Figure summarizes the lag between the
 last journal’s volume and disappearance from the web in years. Most
 journals vanished one year after the last journal volume. The median
 time span until vanishing was two years. Within four years after
-publishing the last volume, around 75% of the studied journals vanished.
-An exception is, for instances, the Ghanian environmental science
-journal “African Journal of Environmental Assessment and Management”,
-which actively published between 1999-2008 and vanished in 2018.
+publishing the last volume, 72% of the studied journals vanished. An
+exception is, for instances, the Ghanian environmental science journal
+“African Journal of Environmental Assessment and Management”, which
+actively published between 1999-2008 and vanished in 2018.
 
 <img src="results_files/figure-gfm/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 | Lag (in years) | Journals | Proportion (in%) | Cumulative Percentage |
 | :------------- | -------: | ---------------: | --------------------: |
-| 0              |       22 |               12 |                    12 |
-| 1              |       45 |               26 |                    38 |
-| 2              |       21 |               12 |                    50 |
-| 3              |       24 |               14 |                    64 |
+| 0              |       23 |               13 |                    13 |
+| 1              |       45 |               26 |                    39 |
+| 2              |       21 |               12 |                    51 |
+| 3              |       23 |               13 |                    64 |
 | 4              |       14 |                8 |                    72 |
 | 5              |       19 |               11 |                    82 |
 | 6              |       13 |                7 |                    90 |
@@ -150,13 +150,13 @@ which actively published between 1999-2008 and vanished in 2018.
 | 9              |        1 |                1 |                    98 |
 | 10             |        3 |                2 |                    99 |
 | 11             |        1 |                1 |                   100 |
-| Total          |      176 |              100 |                   894 |
+| Total          |      176 |              100 |                   895 |
 
 ### Language
 
 | Journal Language | Vanished Journals | Proportion (in %) | Mean Age (in years) |   SD |
 | :--------------- | ----------------: | ----------------: | ------------------: | ---: |
-| English          |               139 |             78.98 |                6.66 | 7.22 |
+| English          |               139 |             78.98 |                6.71 | 7.21 |
 | Mixed            |                17 |              9.66 |                5.47 | 2.74 |
 | Non-English      |                20 |             11.36 |                6.45 | 5.54 |
 
