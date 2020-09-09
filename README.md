@@ -6,6 +6,5 @@ Mikael Laakso, Lisa Matthias, Najko Jahn. 2020. *Open is not forever: a study of
 
 Computational analysis was done with R. The R Markdown file [results.Rmd](results.Rmd) shows how we produced the tables and figures using our compiled dataset about vanished journals This dataset is available via Zenodo:
 
-Laakso, M., Matthias, L., & Jahn, N. (2020). Vanished open access journals [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3756654
-
+Laakso, M., Matthias, L., & Jahn, N. (2020). Vanished open access journals [Data set]. Zenodo. https://doi.org/10.5281/zenodo.4014076
 
