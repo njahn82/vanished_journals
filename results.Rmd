@@ -269,6 +269,6 @@ my_jn_timeline %>%
   knitr::kable(digits = 2)
 ```
 
-Table presents a breakdown of vanished journals by the journal's language relative to the publication activity in years. Most vanished journals in our sample published English-language articles, while around 30 % of journals also dissemianted non-English-langauge research articles. We found no notable difference between the language of the journals and their age.
+Table presents a breakdown of vanished journals by the journal's language relative to the publication activity in years. Most vanished journals in our sample published English-language articles, while around 30 % of journals also disseminated non-English-langauge research articles. We found no notable difference between the language of the journals and their age.
 
 Finally, we also looked for the journal affiliation and found that `r nrow(jn_raw) - (jn_raw %>% filter(society_affiliation == "0.0", other_sci_affiliation == "0.0") %>% nrow())` journals were either affilated with a society (N = `r nrow(jn_raw %>% filter(society_affiliation == "1.0"))`) or with other kinds of research organisation such as a university (N = `r nrow(jn_raw %>% filter(other_sci_affiliation == "1.0"))`).
